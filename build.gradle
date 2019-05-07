@@ -1,0 +1,43 @@
+buildscript {
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.1.4.RELEASE'
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'idea'
+
+group 'com.zuhlke'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    resilience4jVersion = '0.14.0'
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web'
+//    compile 'org.springframework.boot:spring-boot-starter-actuator'
+//    compile 'org.springframework.boot:spring-boot-starter-aop'
+    compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:2.1.1.RELEASE'
+//    compile 'io.github.resilience4j:resilience4j-rxjava2:0.14.0'
+//    compile 'io.github.resilience4j:resilience4j-spring-boot:0.14.0'
+//    compile 'io.github.resilience4j:resilience4j-micrometer:0.14.0'
+    compile 'io.github.resilience4j:resilience4j-circuitbreaker:0.14.0'
+//    compile 'io.github.resilience4j:resilience4j-ratelimiter:0.14.0'
+//    compile 'io.github.resilience4j:resilience4j-retry:0.14.0'
+//    compile 'io.github.resilience4j:resilience4j-bulkhead:0.14.0'
+//    compile 'io.github.resilience4j:resilience4j-cache:0.14.0'
+//    compile 'io.github.resilience4j:resilience4j-timelimiter:0.14.0'
+    testCompile 'junit:junit:4.12'
+}
