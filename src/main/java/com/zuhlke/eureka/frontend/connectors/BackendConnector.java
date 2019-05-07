@@ -10,8 +10,8 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class BackendConnector implements Connector {
+    private static final Logger logger = LoggerFactory.getLogger(BackendConnector.class);
     private final EurekaClient discoveryClient;
-    private Logger logger = LoggerFactory.getLogger(BackendConnector.class);
 
     @Autowired
     public BackendConnector(EurekaClient discoveryClient) {
@@ -20,7 +20,7 @@ public class BackendConnector implements Connector {
 
     @Override
     public String getMessage() {
-        logger.info("Getting message from backend...");
+        logger.info("Getting message from backend.");
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(getServiceUrl(), String.class);
     }
