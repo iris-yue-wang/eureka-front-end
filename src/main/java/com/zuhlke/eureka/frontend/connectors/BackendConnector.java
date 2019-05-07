@@ -2,14 +2,16 @@ package com.zuhlke.eureka.frontend.connectors;
 
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-//@CircuitBreaker(name = "backend")
 @Service
 public class BackendConnector implements Connector {
     private final EurekaClient discoveryClient;
+    private Logger logger = LoggerFactory.getLogger(BackendConnector.class);
 
     @Autowired
     public BackendConnector(EurekaClient discoveryClient) {
@@ -17,7 +19,8 @@ public class BackendConnector implements Connector {
     }
 
     @Override
-    public String success() {
+    public String getMessage() {
+        logger.info("Getting message from backend...");
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(getServiceUrl(), String.class);
     }

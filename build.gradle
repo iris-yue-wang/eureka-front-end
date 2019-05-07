@@ -35,7 +35,7 @@ dependencies {
 //    compile 'io.github.resilience4j:resilience4j-micrometer:0.14.0'
     compile 'io.github.resilience4j:resilience4j-circuitbreaker:0.14.0'
 //    compile 'io.github.resilience4j:resilience4j-ratelimiter:0.14.0'
-//    compile 'io.github.resilience4j:resilience4j-retry:0.14.0'
+    compile 'io.github.resilience4j:resilience4j-retry:0.14.0'
 //    compile 'io.github.resilience4j:resilience4j-bulkhead:0.14.0'
 //    compile 'io.github.resilience4j:resilience4j-cache:0.14.0'
 //    compile 'io.github.resilience4j:resilience4j-timelimiter:0.14.0'

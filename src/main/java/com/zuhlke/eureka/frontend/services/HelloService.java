@@ -3,6 +3,7 @@ package com.zuhlke.eureka.frontend.services;
 import com.zuhlke.eureka.frontend.connectors.Connector;
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
+import io.github.resilience4j.retry.Retry;
 import io.vavr.control.Try;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class HelloService implements GreetingService {
     @Override
     public String getGreetings() {
         CircuitBreaker circuitBreaker = circuitBreakerRegistry.circuitBreaker("backend");
-        Supplier<String> backendFunction = CircuitBreaker.decorateSupplier(circuitBreaker, connector::success);
+        Supplier<String> backendFunction = Retry.decorateSupplier(Retry.ofDefaults("backend"), CircuitBreaker.decorateSupplier(circuitBreaker, connector::getMessage));
         return Try.ofSupplier(backendFunction)
                 .recover(t -> recovery())
                 .get();
