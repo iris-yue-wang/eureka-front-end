@@ -22,22 +22,24 @@ repositories {
 }
 
 ext {
-    resilience4jVersion = '0.14.0'
+    resilience4jVersion = '0.14.1'
 }
 
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
-//    compile 'org.springframework.boot:spring-boot-starter-actuator'
-//    compile 'org.springframework.boot:spring-boot-starter-aop'
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    compile 'org.springframework.boot:spring-boot-starter-aop'
     compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:2.1.1.RELEASE'
-//    compile 'io.github.resilience4j:resilience4j-rxjava2:0.14.0'
-//    compile 'io.github.resilience4j:resilience4j-spring-boot:0.14.0'
-//    compile 'io.github.resilience4j:resilience4j-micrometer:0.14.0'
-    compile 'io.github.resilience4j:resilience4j-circuitbreaker:0.14.0'
-//    compile 'io.github.resilience4j:resilience4j-ratelimiter:0.14.0'
-    compile 'io.github.resilience4j:resilience4j-retry:0.14.0'
-//    compile 'io.github.resilience4j:resilience4j-bulkhead:0.14.0'
-//    compile 'io.github.resilience4j:resilience4j-cache:0.14.0'
-//    compile 'io.github.resilience4j:resilience4j-timelimiter:0.14.0'
+    compile 'io.github.resilience4j:resilience4j-spring-boot2:0.14.1'
+    compile 'io.github.resilience4j:resilience4j-ratpack:0.14.1'
+//    compile 'io.github.resilience4j:resilience4j-rxjava2:0.14.1'
+//    compile 'io.github.resilience4j:resilience4j-micrometer:0.14.1'
+//    compile 'io.github.resilience4j:resilience4j-circuitbreaker:0.14.1'
+//    compile 'io.github.resilience4j:resilience4j-ratelimiter:0.14.1'
+//    compile 'io.github.resilience4j:resilience4j-retry:0.14.1'
+//    compile 'io.github.resilience4j:resilience4j-bulkhead:0.14.1'
+//    compile 'io.github.resilience4j:resilience4j-cache:0.14.1'
+//    compile 'io.github.resilience4j:resilience4j-timelimiter:0.14.1'
+
     testCompile 'junit:junit:4.12'
 }

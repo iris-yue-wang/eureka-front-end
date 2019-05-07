@@ -8,18 +8,19 @@ import io.vavr.control.Try;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Supplier;
 
-@Service
+@Service("helloService")
 public class HelloService implements GreetingService {
     private static final Logger logger = LoggerFactory.getLogger(HelloService.class);
     private final Connector connector;
     private final CircuitBreakerRegistry circuitBreakerRegistry;
 
     @Autowired
-    public HelloService(Connector connector, CircuitBreakerRegistry circuitBreakerRegistry) {
+    public HelloService(@Qualifier("helloConnector") Connector connector, CircuitBreakerRegistry circuitBreakerRegistry) {
         this.connector = connector;
         this.circuitBreakerRegistry = circuitBreakerRegistry;
     }

@@ -7,17 +7,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloController {
+public class GoodMorningController {
 
     private final GreetingService greetingService;
 
     @Autowired
-    public HelloController(@Qualifier("helloService") GreetingService greetingService) {
+    public GoodMorningController(@Qualifier("goodMorningService") GreetingService greetingService) {
         this.greetingService = greetingService;
     }
 
-    @GetMapping("/hello")
-    public String hello() {
+    @GetMapping("/goodMorning")
+    public String goodMorning() {
         return greetingService.getGreetings();
     }
 }
