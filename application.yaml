@@ -9,7 +9,7 @@ resilience4j.retry:
       maxRetryAttempts: 5
       waitDuration: 600
       eventConsumerBufferSize: 100
-      enableExponentialBackoff: true
+      enableExponentialBackoff: false
       exponentialBackoffMultiplier: 2
       enableRandomizedWait: false
       randomizedWaitFactor: 2
@@ -20,3 +20,9 @@ resilience4j.retry:
 spring:
   application:
     name: frontend
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
