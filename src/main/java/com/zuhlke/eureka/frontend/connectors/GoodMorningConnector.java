@@ -10,12 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-@Retry(name = "goodMorning")
+//@Retry(name = "goodMorning", recovery = GoodMorningRecoveryFunction.class)
 @CircuitBreaker(name = "goodMorning")
 @Service("goodMorningConnector")
 public class GoodMorningConnector implements Connector {
-    private final EurekaClient discoveryClient;
     private static final Logger logger = LoggerFactory.getLogger(GoodMorningConnector.class);
+    private final EurekaClient discoveryClient;
 
     @Autowired
     public GoodMorningConnector(EurekaClient discoveryClient) {
@@ -23,6 +23,7 @@ public class GoodMorningConnector implements Connector {
     }
 
     @Override
+    @Retry(name = "goodMorning")
     public String getMessage() {
         logger.info("Getting good morning from backend.");
         RestTemplate restTemplate = new RestTemplate();

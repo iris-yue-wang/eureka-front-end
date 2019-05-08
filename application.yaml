@@ -4,17 +4,17 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 
 resilience4j.retry:
-  retryAspectOrder: 399
   backends:
     goodMorning:
       maxRetryAttempts: 5
       waitDuration: 600
       eventConsumerBufferSize: 100
-      enableExponentialBackoff: false
+      enableExponentialBackoff: true
       exponentialBackoffMultiplier: 2
       enableRandomizedWait: false
       randomizedWaitFactor: 2
       retryExceptions:
+        - java.lang.RuntimeException
         - java.net.ConnectException
 
 spring:
